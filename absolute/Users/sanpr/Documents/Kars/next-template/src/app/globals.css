@@ -1,0 +1,77 @@
+@import "next/font/google";
+@import "tw-animate-css";
+
+
+@custom-variant dark (&:is(.dark *));
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 267 100% 61%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 328 100% 61%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 64.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 267 100% 61%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 267 100% 61%;
+    --input: 267 100% 61%;
+    --ring: 267 100% 61%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@theme inline {
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-nunito), sans-serif; /* Use the CSS variable */
+  }
+}
+
+/* Removed @import "next/font/google"; from here */
+/* Removed body { font-family: var(--font-nunito), sans-serif; } from here as it's now in the @layer base above */

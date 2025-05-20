@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito } from "next/font/google"; // Import Nunito
 import "./globals.css";
 import { AuthProvider } from "@/lib/AuthContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Configure Nunito font
+const nunito = Nunito({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-nunito", // CSS variable for Nunito
+  weight: ["400", "700", "800"], // Specify the weights you need
 });
 
 export const metadata: Metadata = {
@@ -24,10 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${nunito.variable}`}> {/* Apply Nunito variable to html tag */}
+      <body className="antialiased"> {/* Remove previous font variables, antialiased is good */}
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
